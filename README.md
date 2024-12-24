@@ -28,6 +28,7 @@ Nexus is an iOS social media application built using **Swift** and **SwiftUI**, 
 - Receive real-time notifications through **Firebase**.
 - Send and receive direct messages.
 - Manage your profile, including display name and profile picture.
+- Dark & Light modes
 
 ---
 
