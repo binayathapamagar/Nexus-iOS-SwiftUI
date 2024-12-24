@@ -77,7 +77,7 @@ Nexus is an iOS social media application built using **Swift** and **SwiftUI**, 
 ---
 
 ## 📷 Screenshots
-*(Include screenshots to showcase your app's UI and features, such as login screen, feed, and user profile.)*
+<img src="Screenshots/main.png" width=80%>
 
 ---
 
