@@ -22,7 +22,7 @@ Nexus is an iOS social media application built using **Swift** and **SwiftUI**, 
 ---
 
 ## 🚀 Features
-- Post text-based updates to share with followers.
+- Post text & image updates to share with followers.
 - Follow other users and see their posts on the feed.
 - Like and comment on posts to interact with content.
 - Receive real-time notifications through **Firebase**.
