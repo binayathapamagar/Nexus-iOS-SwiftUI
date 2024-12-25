@@ -19,7 +19,7 @@ Nexus is an iOS social media application built using **Swift** and **SwiftUI**, 
 <img src="Screenshots/main.png">
 <img src="Screenshots/secondary.png">
 
-https://drive.google.com/file/d/1v4cwSQErogeg_6Ahk1g_hqcOmIkECaHe/view?usp=drive_link
+<video src="[https://github.com/rayytsn9/ROBOTT/assets/79029536/62f541aa-aa8c-43f5-9ead-4b7a2e0d7c2a](https://drive.google.com/file/d/1v4cwSQErogeg_6Ahk1g_hqcOmIkECaHe/view?usp=drive_link)" width="300" />
 
 ---
 
