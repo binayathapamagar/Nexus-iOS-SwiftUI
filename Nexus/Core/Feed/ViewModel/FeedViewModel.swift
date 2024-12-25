@@ -30,9 +30,6 @@ class FeedViewModel: ObservableObject {
             let thread = threads[i]
             let ownerUid = thread.ownerUid
             let threadOwner = try await UserService.fetchUser(with: ownerUid)
-            
-            print("i = \(i) | Threads count = \(threads.count)")
-            
             threads[i].user = threadOwner
         }
     }

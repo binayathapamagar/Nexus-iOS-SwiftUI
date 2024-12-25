@@ -43,20 +43,31 @@ class ActivityViewModel: ObservableObject {
         for i in 0 ..< notifications.count {
             let notification = notifications[i]
             let senderId = notification.senderId
-            let notificationSender = try await UserService.fetchUser(with: senderId)
             
-            notifications[i].sender = notificationSender
-            notifications[i].notificationOwner = loggedInUser
-                        
+            do {
+                let notificationSender = try await UserService.fetchUser(with: senderId)
+                notifications[i].sender = notificationSender
+                notifications[i].notificationOwner = loggedInUser
+            } catch {
+                print(#function, "DEBUG: Error fetching user for senderId \(senderId): \(error)")
+                continue // Skip to the next notification if the user fetch fails
+            }
+            
+            // Fetch associated thread if present
             if let threadId = notification.threadId {
-                var thread = try await ThreadService.fetchThread(threadId: threadId)
-                thread.user = loggedInUser
-                notifications[i].thread = thread
+                do {
+                    var thread = try await ThreadService.fetchThread(threadId: threadId)
+                    thread.user = loggedInUser
+                    notifications[i].thread = thread
+                } catch {
+                    print(#function, "DEBUG: Error fetching thread for threadId \(threadId): \(error)")
+                }
             }
         }
         
         self.filteredNotifications = notifications
     }
+
     
     func updateFilter(with newFilterValue: ActivityFilterOption) {
         selectedFilterTab = newFilterValue
