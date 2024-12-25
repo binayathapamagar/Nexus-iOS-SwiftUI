@@ -13,6 +13,8 @@ struct ThreadReplyView: View {
     @StateObject private var newThreadViewModel = NewThreadViewModel()
     @State private var replyImageUrl = ""
     @State private var reply: String = ""
+    @State private var imageCoverData: ImageCoverData?
+
     @Environment(\.dismiss) var dismiss
     
     let thread: Thread
@@ -73,6 +75,16 @@ struct ThreadReplyView: View {
                                             RoundedRectangle(cornerRadius: 10)
                                         )
                                         .padding(.top, 8)
+                                        .onTapGesture {
+                                            imageCoverData = ImageCoverData(imageUrl: imageUrl)
+                                        }
+                                        .fullScreenCover(item: $imageCoverData, onDismiss: {
+                                            print("Image dismissed")
+                                        }) { imageCover in
+                                            FullScreenImageView(imageUrl: imageCover.imageUrl) {
+                                                imageCoverData = nil
+                                            }
+                                        }
                                 }
                             }//VStack
                             .font(.subheadline)
