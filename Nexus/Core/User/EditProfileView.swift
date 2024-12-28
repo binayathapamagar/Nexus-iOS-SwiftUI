@@ -99,6 +99,13 @@ struct EditProfileView: View {
                         .strokeBorder(Color(.systemGray4), lineWidth: 1)
                 )
                 .padding()
+                .alert(isPresented: $viewModel.showAlert) {
+                    Alert(
+                        title: Text("Error"),
+                        message: Text(viewModel.errorMessage),
+                        dismissButton: .default(Text("OK"))
+                    )
+                }
                 
                 if viewModel.showLoadingSpinner {
                     Color.black.opacity(0.4)
@@ -123,8 +130,10 @@ struct EditProfileView: View {
                 ToolbarItem(placement: .topBarTrailing) {
                     Button("Done") {
                         Task {
-                            try await viewModel.updateUserData(with: user.id)
-                            dismiss()
+                            let userUpdated = try await viewModel.updateUserData(with: user.id)
+                            if userUpdated {
+                                dismiss()
+                            }
                         }
                     }
                     .font(.subheadline)

@@ -85,7 +85,12 @@ extension CurrentUserProfileView {
             viewModel.showLoadingSpinner = false
             guard let url = url else { return }
             let activityVC = UIActivityViewController(activityItems: [url], applicationActivities: nil)
-            UIApplication.shared.windows.first?.rootViewController?.present(activityVC, animated: true)
+            if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+               let keyWindow = windowScene.windows.first(where: { $0.isKeyWindow }),
+               let rootViewController = keyWindow.rootViewController {
+                rootViewController.present(activityVC, animated: true)
+            }
+
         }
     }
     

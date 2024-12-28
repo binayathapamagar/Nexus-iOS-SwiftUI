@@ -26,7 +26,8 @@ class UserService {
     func fetchCurrentUser() async throws {
         guard let uid = Auth.auth().currentUser?.uid else { return }
         let snapshot = try await FirestoreConstants
-            .UserCollection.document(uid)
+            .UserCollection
+            .document(uid)
             .getDocument()
         let user = try snapshot.data(as: User.self)
         self.currentUser = user
