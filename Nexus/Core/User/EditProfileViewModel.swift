@@ -20,14 +20,15 @@ class EditProfileViewModel: ObservableObject {
     @Published var isPrivate: Bool = false
     @Published var profileImage: Image?
     @Published var showLoadingSpinner = false
+    @Published var errorMessage = ""
+    @Published var showAlert = false
 
     private var uiImage: UIImage?
-    
-    // Error messages
-    @Published var errorMessage: String?
-    
+    private var previousUsername: String = ""
+        
     func loadUserData(user: User) {
         self.username = user.username
+        self.previousUsername = self.username
         self.bio = user.bio ?? ""
         self.link = user.link ?? ""
         self.isPrivate = user.isPrivate
@@ -43,9 +44,9 @@ class EditProfileViewModel: ObservableObject {
     }
     
     @MainActor
-    func updateUserData(with userId: String) async throws {
+    func updateUserData(with userId: String) async throws -> Bool {
         showLoadingSpinner = true
-
+        
         defer {
             showLoadingSpinner = false
         }
@@ -57,17 +58,39 @@ class EditProfileViewModel: ObservableObject {
         ]
         
         if !username.isEmpty {
-            dataToUpdate["username"] = username
+            let usernameIsUnique = try await usernameIsUnique()
+            
+            if usernameIsUnique {
+                dataToUpdate["username"] = username
+            } else {
+                if username != previousUsername {
+                    errorMessage = "The username '\(username)' is already taken. Please choose a different username."
+                    showAlert = true
+                    return false
+                }
+            }
         }
         
         // Update the profile image if it was changed
         if let image = self.uiImage {
-            guard let imageUrl = try await ImageUploader.uploadUserProfileImage(for: .Profile, image, userId: userId) else { return }
+            guard let imageUrl = try await ImageUploader.uploadUserProfileImage(for: .Profile, image, userId: userId) else { return false }
             dataToUpdate["profileImageUrl"] = imageUrl
         }
         
         // Call the UserService to update the user's profile data
         try await UserService.shared.updateUserProfile(with: dataToUpdate)
+        
+        return true
+    }
+    
+    @MainActor
+    func usernameIsUnique() async throws -> Bool {
+        let snapshot = try await FirestoreConstants
+            .UserCollection
+            .whereField("username", isEqualTo: username)
+            .getDocuments()
+        
+        return snapshot.documents.isEmpty
     }
     
 }
