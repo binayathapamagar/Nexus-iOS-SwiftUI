@@ -82,43 +82,45 @@ struct NewThreadView: View {
                     }//ZStack
                 }
                 
-                HStack(alignment: .bottom, spacing: 24) {
-                    Button {
-                        viewModel.checkPermission(for: .photos)
-                    } label: {
-                        if viewModel.photoPermissionGranted {
-                            PhotosPicker(selection: $viewModel.selectedItem) {
+                if !inFeedView {
+                    HStack(alignment: .bottom, spacing: 24) {
+                        Button {
+                            viewModel.checkPermission(for: .photos)
+                        } label: {
+                            if viewModel.photoPermissionGranted {
+                                PhotosPicker(selection: $viewModel.selectedItem) {
+                                    Image(systemName: "photo")
+                                        .resizable()
+                                        .aspectRatio(contentMode: .fit)
+                                        .frame(width: 20, height: 20)
+                                        .foregroundStyle(.icon)
+                                }
+                            } else {
                                 Image(systemName: "photo")
                                     .resizable()
                                     .aspectRatio(contentMode: .fit)
                                     .frame(width: 20, height: 20)
                                     .foregroundStyle(.icon)
                             }
-                        } else {
-                            Image(systemName: "photo")
+                        }//Button
+                        .disabled(inFeedView)
+                        
+                        Button {
+                            viewModel.checkPermission(for: .camera)
+                            if viewModel.cameraPermissionGranted {
+                                viewModel.showCameraPicker = true
+                            }
+                        } label: {
+                            Image(systemName: "camera")
                                 .resizable()
                                 .aspectRatio(contentMode: .fit)
                                 .frame(width: 20, height: 20)
                                 .foregroundStyle(.icon)
                         }
-                    }//Button
-                    .disabled(inFeedView)
-                    
-                    Button {
-                        viewModel.checkPermission(for: .camera)
-                        if viewModel.cameraPermissionGranted {
-                            viewModel.showCameraPicker = true
-                        }
-                    } label: {
-                        Image(systemName: "camera")
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .frame(width: 20, height: 20)
-                            .foregroundStyle(.icon)
-                    }
-                    .disabled(inFeedView)
-                    
-                    Spacer()
+                        .disabled(inFeedView)
+                        
+                        Spacer()
+                    }//HStack
                 }
             }//VStack
             .sheet(isPresented: $viewModel.showCameraPicker) {
