@@ -1,6 +1,6 @@
 # Nexus iOS App
 
-Nexus is an iOS social media application built using **Swift** and **SwiftUI**, inspired by platforms like Twitter and Threads. The app allows users to post updates, follow others, like and comment on posts, and receive real-time notifications. It integrates **Firebase** for backend services, including real-time data synchronization and user authentication.
+Nexus is a modern iOS social media application developed in Swift using SwiftUI, inspired by platforms like Twitter and Threads. It empowers users to post updates (text + images), follow others, like and comment on posts, and receive real-time notifications. The app uses Firebase for backend infrastructure, enabling real-time sync and secure user authentication.
 
 ---
 
@@ -22,21 +22,38 @@ Nexus is an iOS social media application built using **Swift** and **SwiftUI**, 
 ---
 
 ## 🚀 Features
-- Post text & image updates to share with followers.
-- Follow other users and see their posts on the feed.
-- Like and comment on posts to interact with content.
-- Receive real-time notifications through **Firebase**.
-- Manage your profile, including display name and profile picture.
-- Dark & Light modes
+
+📝 Create posts with text and images.
+
+👥 Follow/unfollow users and view their updates in your feed.
+
+❤️ Like and 💬 comment on posts to engage with the community.
+
+🔔 Receive real-time push notifications via Firebase Cloud Messaging (FCM).
+
+👤 Manage your profile (username, bio, profile picture).
+
+🌓 Support for both Light and Dark mode.
+
+🔒 Secure Firebase Authentication for sign-up and sign-in.
 
 ---
 
-## 🛠 Technologies Used
-- **Swift** & **SwiftUI**: For building a modern, responsive user interface.
-- **Firebase**: For backend services including:
-  - **Firebase Authentication**: Manage user sign-in/sign-up.
-  - **Firebase Firestore**: Real-time data storage for posts, comments, and user interactions.
-  - **Firebase Storage**: Storing profile pictures and media.
+## 🧰 Tech Stack
+
+Swift & SwiftUI – Declarative UI framework for building native, responsive interfaces.
+
+Firebase (Google Cloud Platform):
+
+🔐 Firebase Authentication – Email/password and anonymous auth.
+
+🔄 Cloud Firestore – Real-time NoSQL database.
+
+☁️ Firebase Storage – Media and profile picture storage.
+
+📡 Firebase Cloud Messaging – Push notifications.
+
+
 
 ---
 
