@@ -23,37 +23,27 @@ Nexus is a modern iOS social media application developed in Swift using SwiftUI,
 
 ## 🚀 Features
 
-📝 Create posts with text and images.
-
-👥 Follow/unfollow users and view their updates in your feed.
-
-❤️ Like and 💬 comment on posts to engage with the community.
-
-🔔 Receive real-time push notifications via Firebase Cloud Messaging (FCM).
-
-👤 Manage your profile (username, bio, profile picture).
-
-🌓 Support for both Light and Dark mode.
-
-🔒 Secure Firebase Authentication for sign-up and sign-in.
+- 📝 Create posts with text and images.
+- 👥 Follow/unfollow users and view their updates in your feed.
+- ❤️ Like and 💬 comment on posts to engage with the community.
+- 🔔 Receive real-time push notifications via Firebase Cloud Messaging (FCM).
+- 👤 Manage your profile (username, bio, profile picture).
+- 🌓 Support for both Light and Dark mode.
+- 🔒 Secure Firebase Authentication for sign-up and sign-in.
+- 🗨️ **Coming Soon**: Direct messaging between users for private conversations.
 
 ---
 
 ## 🧰 Tech Stack
 
-Swift & SwiftUI – Declarative UI framework for building native, responsive interfaces.
+**Swift & SwiftUI** – Declarative UI framework for building native, responsive interfaces.
 
-Firebase (Google Cloud Platform):
+**Firebase (Google Cloud Platform):**
 
-🔐 Firebase Authentication – Email/password and anonymous auth.
-
-🔄 Cloud Firestore – Real-time NoSQL database.
-
-☁️ Firebase Storage – Media and profile picture storage.
-
-📡 Firebase Cloud Messaging – Push notifications.
-
-
+- 🔐 Firebase Authentication – Email/password and anonymous auth.
+- 🔄 Cloud Firestore – Real-time NoSQL database.
+- ☁️ Firebase Storage – Media and profile picture storage.
+- 📡 Firebase Cloud Messaging – Push notifications.
 
 ---
 
@@ -92,6 +82,7 @@ Firebase (Google Cloud Platform):
 ---
 
 ## 💻 Usage
+
 - Sign up or log in using Firebase Authentication.
 - Post updates to your timeline, follow users, and interact with posts.
 - Check notifications for real-time updates on likes, comments, and new followers.
@@ -100,15 +91,18 @@ Firebase (Google Cloud Platform):
 ---
 
 ## 👨‍💻 Credits
-This project was developed by **Binaya Thapa Magar**:
+
+This project was developed by **Binaya Thapa Magar**:  
 - [**Binaya Thapa Magar**](https://github.com/binayathapamagar)
 
 ---
 
 ## 📄 License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+This project is licensed under the MIT License – see the [LICENSE](LICENSE) file for details.
 
 ---
 
 ### 📬 Contact
+
 For inquiries or feedback, feel free to reach out to me via GitHub or [your preferred contact method].
